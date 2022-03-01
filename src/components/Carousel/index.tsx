@@ -1,8 +1,12 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 // Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 export function Carousel(){
     return (
@@ -39,26 +43,45 @@ export function Carousel(){
 
             <Box>
                 <Swiper
-                    spaceBetween={0}
-                    tag="section"
-                    wrapperTag="ul"
+                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                    spaceBetween={50}
+                    slidesPerView={1}
                     navigation
                     pagination={{ clickable: true }}
-                    slidesPerView={1}
-                    onInit={(swiper) => console.log("initialized", swiper)}
-                    onSlideChange={() => console.log('slide change')}
+                    scrollbar={{ draggable: true }}
                     onSwiper={(swiper) => console.log(swiper)}
+                    onSlideChange={() => console.log('slide change')}
                 >
-                    <SwiperSlide tag="li">
-                        <Image src="continentImage.svg" alt="slide1"/>
+                    <SwiperSlide>
+                        <Box>
+                            <Flex 
+                                position="absolute"
+                                direction="column"
+                                textAlign="center"
+                                w="100%"
+                                top="40%"
+                            >
+                                <Text 
+                                    fontWeight="700" 
+                                    color="white.100" 
+                                    fontSize="48px"
+                                >Europa</Text>
+                                <Text 
+                                    fontSize="24px" 
+                                    color="gray.100"
+                                    fontWeight="700"
+                                >o continente mais antigo</Text>
+                            </Flex>
+                            <Image src="continentImage.svg" alt="slide1"/>
+                        </Box>
                     </SwiperSlide>
-                    <SwiperSlide tag="li">
+                    <SwiperSlide>
                         <Image src="continentImage.svg" alt="slide2"/>
                     </SwiperSlide>
-                    <SwiperSlide tag="li">
+                    <SwiperSlide>
                         <Image src="continentImage.svg" alt="slide3"/>
                     </SwiperSlide>
-                    <SwiperSlide >
+                    <SwiperSlide>
                         <Image src="continentImage.svg" alt="slide4"/>
                     </SwiperSlide>
                 </Swiper>
