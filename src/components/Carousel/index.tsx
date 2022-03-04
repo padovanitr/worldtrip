@@ -8,6 +8,45 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
+const continentImages = [
+    {
+        id: 1,
+        name: "Europa",
+        description: "o continente mais antigo",
+        src: "continentImage.svg"
+    },
+    {
+        id: 2,
+        name: "America do Norte",
+        description: "o continente das oportunidades",
+        src: "north_america.jpg",
+    },
+    {
+        id: 3,
+        name: "America do Sul",
+        description: "o continente bonito",
+        src: "south_america.jpg"
+    },
+    {
+        id: 4,
+        name: "Ásia",
+        description: "o continente com curiosidades",
+        src: "asia.jpg"
+    },
+    {
+        id: 5,
+        name: "África",
+        description: "o continente do sol",
+        src: "africa.jpg"
+    },
+    {
+        id: 6,
+        name: "Oceania",
+        description: "o continente das peculiaridades",
+        src: "oceania.jpg"
+    },
+]
+
 export function Carousel(){
     return (
         <Flex  
@@ -51,39 +90,33 @@ export function Carousel(){
                     scrollbar={{ draggable: true }}
                     onSwiper={(swiper) => console.log(swiper)}
                     onSlideChange={() => console.log('slide change')}
-                >
-                    <SwiperSlide>
-                        <Box>
-                            <Flex 
-                                position="absolute"
-                                direction="column"
-                                textAlign="center"
-                                w="100%"
-                                top="40%"
-                            >
-                                <Text 
-                                    fontWeight="700" 
-                                    color="white.100" 
-                                    fontSize="48px"
-                                >Europa</Text>
-                                <Text 
-                                    fontSize="24px" 
-                                    color="gray.100"
-                                    fontWeight="700"
-                                >o continente mais antigo</Text>
-                            </Flex>
-                            <Image src="continentImage.svg" alt="slide1"/>
-                        </Box>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Image src="continentImage.svg" alt="slide2"/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Image src="continentImage.svg" alt="slide3"/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Image src="continentImage.svg" alt="slide4"/>
-                    </SwiperSlide>
+                >   
+                    {continentImages.map(continentImage =>(
+                        <SwiperSlide key={continentImage.id}>
+                            <Box>
+                                <Flex 
+                                    position="absolute"
+                                    direction="column"
+                                    textAlign="center"
+                                    w="100%"
+                                    top="40%"
+                                    zIndex="2"
+                                >
+                                    <Text 
+                                        fontWeight="700" 
+                                        color="white.100" 
+                                        fontSize="48px"
+                                    >{continentImage.name}</Text>
+                                    <Text 
+                                        fontSize="24px" 
+                                        color="gray.100"
+                                        fontWeight="700"
+                                    >{continentImage.description}</Text>
+                                </Flex>
+                                <Image height="422px" width="100%" filter="brightness(0.5)" src={continentImage.src} alt={continentImage.name} />
+                            </Box>
+                        </SwiperSlide>
+                    ))}
                 </Swiper>
             </Box>
 
