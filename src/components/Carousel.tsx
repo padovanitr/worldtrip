@@ -1,6 +1,7 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { useMediaQuery } from "@chakra-ui/react";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -13,7 +14,7 @@ const continentImages = [
         id: 1,
         name: "Europa",
         description: "o continente mais antigo",
-        src: "continentImage.svg"
+        src: "europe.jpg"
     },
     {
         id: 2,
@@ -48,6 +49,8 @@ const continentImages = [
 ]
 
 export function Carousel(){
+    const [isMobile] = useMediaQuery("(max-width: 768px)")
+
     return (
         <Flex  
             justifyContent="center" 
@@ -61,12 +64,25 @@ export function Carousel(){
             <Box 
                 _before={{
                     content: `""`,
-                    borderBottom: "2px solid #47585B",
-                    width: "90px",
+                    borderBottom: `${isMobile ? "1px solid #47585B" : "2px solid #47585B"}`,
+                    width: `${isMobile ? '60px' : '90px'}`,
                     display: "flex",
                     margin: "2px auto 0 auto",
                 }}
-            >
+            >   
+            {isMobile ? 
+                <Text
+                    fontSize='20px' 
+                    fontWeight="500" 
+                    color="gray.800"
+                    textAlign="center"
+                    p="23px 0"
+                    lineHeight="30px"
+                >
+                    Vamos nessa? <br /> Então escolha seu continente
+                </Text>
+                :
+
                 <Text
                     fontSize='36px' 
                     fontWeight="bold" 
@@ -78,6 +94,8 @@ export function Carousel(){
                 >
                     Vamos nessa? <br /> Então escolha seu continente
                 </Text>
+            }
+
             </Box>
 
             <Box>
@@ -105,15 +123,20 @@ export function Carousel(){
                                     <Text 
                                         fontWeight="700" 
                                         color="white.100" 
-                                        fontSize="48px"
+                                        fontSize={isMobile ? "24px" : "48px"}
                                     >{continentImage.name}</Text>
                                     <Text 
-                                        fontSize="24px" 
+                                        fontSize={isMobile ? "14px" : "24px"}
                                         color="gray.100"
                                         fontWeight="700"
                                     >{continentImage.description}</Text>
                                 </Flex>
-                                <Image height="422px" width="100%" filter="brightness(0.5)" src={continentImage.src} alt={continentImage.name} />
+                                <Image 
+                                    height={isMobile ? "250px" : "422px"} 
+                                    width="100%" filter={continentImage.id !== 1 ? "brightness(0.5)" : "none"} 
+                                    src={continentImage.src} 
+                                    alt={continentImage.name} 
+                                />
                             </Box>
                         </SwiperSlide>
                     ))}

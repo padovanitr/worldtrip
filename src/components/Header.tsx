@@ -1,8 +1,8 @@
-import { Image, Flex } from '@chakra-ui/react'
-import { useMediaQuery } from "@chakra-ui/react"
+import { Image, Flex } from '@chakra-ui/react';
+import { useMediaQuery } from "@chakra-ui/react";
 
 export function Header(){
-    const [isMobile] = useMediaQuery("(max-width: 768px)")
+    const [isMobile] = useMediaQuery("(max-width: 768px)");
 
     return(
         <Flex
