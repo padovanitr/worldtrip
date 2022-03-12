@@ -13,3 +13,27 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #FFBA08 !important;
+
+  &:after {
+    font-size: 30px !important;
+
+    @media (max-width: 768px) {
+      font-size: 16px !important;
+    }
+  }
+}
+
+.swiper-pagination-bullet {
+  background: #FFBA08 !important;
+  height: 16px !important;
+  width: 16px !important;
+
+  @media (max-width: 768px) {
+    height: 8px !important;
+    width: 8px !important;
+  }
+}
