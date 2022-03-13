@@ -8,7 +8,7 @@ export function TravelTypes(){
             w="100%"
             justifyContent="space-between"
             alignItems="center"
-            mt={["10","32"]}
+            mt={["10","20"]}
             mx="auto"
             maxW="1160px"
             flexWrap="wrap"

@@ -16,42 +16,42 @@ const continents = [
         name: "Europa",
         description: "o continente mais antigo",
         src: "/images/europe.jpg",
-        link: "europe"
+        link: "/continents/europa"
     },
     {
         id: 2,
         name: "America do Norte",
         description: "o continente das oportunidades",
         src: "/images/north_america.jpg",
-        link: "america-do-norte"
+        link: "/continents/america-do-norte"
     },
     {
         id: 3,
         name: "America do Sul",
         description: "o continente bonito",
         src: "/images/south_america.jpg",
-        link: "america-do-sul"
+        link: "/continents/america-do-sul"
     },
     {
         id: 4,
         name: "Ásia",
         description: "o continente com curiosidades",
         src: "/images/asia.jpg",
-        link: "asia"
+        link: "/continents/asia"
     },
     {
         id: 5,
         name: "África",
         description: "o continente do sol",
         src: "/images/africa.jpg",
-        link: "africa"
+        link: "/continents/africa"
     },
     {
         id: 6,
         name: "Oceania",
         description: "o continente das peculiaridades",
         src: "/images/oceania.jpg",
-        link: "oceania"
+        link: "/continents/oceania"
     },
 ]
 
@@ -113,12 +113,10 @@ export function Carousel(){
                     navigation
                     pagination={{ clickable: true }}
                     scrollbar={{ draggable: true }}
-                    onSwiper={(swiper) => console.log(swiper)}
-                    onSlideChange={() => console.log('slide change')}
                 >   
                     {continents.map(continent =>(
-                        <SwiperSlide>
-                            <Link href={continent.link} key={continent.id}>
+                        <SwiperSlide key={continent.id}>
+                            <Link href={continent.link}>
                                 <Box>
                                     <Flex 
                                         position="absolute"
@@ -148,7 +146,6 @@ export function Carousel(){
                                 </Box>
                             </Link>
                         </SwiperSlide>
-                        
                     ))}
                 </Swiper>
             </Box>

@@ -1,7 +1,12 @@
-import { Image, Flex } from '@chakra-ui/react';
-import { useMediaQuery } from "@chakra-ui/react";
+import { Image, Flex, Link as ChakraLink, Icon, useMediaQuery } from '@chakra-ui/react';
+import Link from 'next/link';
+import { FiChevronLeft } from "react-icons/fi";
 
-export function Header(){
+interface HeaderProps {
+    hasBackLink?: boolean;
+}
+
+export function Header({ hasBackLink = false }: HeaderProps){
     const [isMobile] = useMediaQuery("(max-width: 768px)");
 
     return(
@@ -14,7 +19,14 @@ export function Header(){
             align="center"
             alignItems="center"
             justifyContent="center"
-        >
+        >   
+            {hasBackLink && (
+                <Link href='/'>
+                    <ChakraLink position='absolute' left={['16px', '40px']}>
+                        <Icon as={FiChevronLeft} fontSize={["1rem", "2rem"]}/>
+                    </ChakraLink>
+                </Link>
+            )}
             <Image 
                 boxSize={isMobile ? '81px' : '180px'} 
                 src="Logo.svg" 
