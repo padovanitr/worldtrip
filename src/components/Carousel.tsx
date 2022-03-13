@@ -14,37 +14,37 @@ const continentImages = [
         id: 1,
         name: "Europa",
         description: "o continente mais antigo",
-        src: "europe.jpg"
+        src: "/images/europe.jpg"
     },
     {
         id: 2,
         name: "America do Norte",
         description: "o continente das oportunidades",
-        src: "north_america.jpg",
+        src: "/images/north_america.jpg",
     },
     {
         id: 3,
         name: "America do Sul",
         description: "o continente bonito",
-        src: "south_america.jpg"
+        src: "/images/south_america.jpg"
     },
     {
         id: 4,
         name: "Ásia",
         description: "o continente com curiosidades",
-        src: "asia.jpg"
+        src: "/images/asia.jpg"
     },
     {
         id: 5,
         name: "África",
         description: "o continente do sol",
-        src: "africa.jpg"
+        src: "/images/africa.jpg"
     },
     {
         id: 6,
         name: "Oceania",
         description: "o continente das peculiaridades",
-        src: "oceania.jpg"
+        src: "/images/oceania.jpg"
     },
 ]
 

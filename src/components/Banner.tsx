@@ -6,7 +6,7 @@ export function Banner(){
 
     return (
         <Flex>
-            <Image src={isMobile ? "Banner_mobile.svg" : "Banner.svg"}/>
+            <Image src={isMobile ? "/images/Banner_mobile.svg" : "/images/Banner.svg"}/>
         </Flex>
     )
 }
