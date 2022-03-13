@@ -8,43 +8,50 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import Link from "next/link";
 
-const continentImages = [
+const continents = [
     {
         id: 1,
         name: "Europa",
         description: "o continente mais antigo",
-        src: "/images/europe.jpg"
+        src: "/images/europe.jpg",
+        link: "europe"
     },
     {
         id: 2,
         name: "America do Norte",
         description: "o continente das oportunidades",
         src: "/images/north_america.jpg",
+        link: "america-do-norte"
     },
     {
         id: 3,
         name: "America do Sul",
         description: "o continente bonito",
-        src: "/images/south_america.jpg"
+        src: "/images/south_america.jpg",
+        link: "america-do-sul"
     },
     {
         id: 4,
         name: "Ásia",
         description: "o continente com curiosidades",
-        src: "/images/asia.jpg"
+        src: "/images/asia.jpg",
+        link: "asia"
     },
     {
         id: 5,
         name: "África",
         description: "o continente do sol",
-        src: "/images/africa.jpg"
+        src: "/images/africa.jpg",
+        link: "africa"
     },
     {
         id: 6,
         name: "Oceania",
         description: "o continente das peculiaridades",
-        src: "/images/oceania.jpg"
+        src: "/images/oceania.jpg",
+        link: "oceania"
     },
 ]
 
@@ -109,36 +116,39 @@ export function Carousel(){
                     onSwiper={(swiper) => console.log(swiper)}
                     onSlideChange={() => console.log('slide change')}
                 >   
-                    {continentImages.map(continentImage =>(
-                        <SwiperSlide key={continentImage.id}>
-                            <Box>
-                                <Flex 
-                                    position="absolute"
-                                    direction="column"
-                                    textAlign="center"
-                                    w="100%"
-                                    top="40%"
-                                    zIndex="2"
-                                >
-                                    <Text 
-                                        fontWeight="700" 
-                                        color="white.100" 
-                                        fontSize={isMobile ? "24px" : "48px"}
-                                    >{continentImage.name}</Text>
-                                    <Text 
-                                        fontSize={isMobile ? "14px" : "24px"}
-                                        color="gray.100"
-                                        fontWeight="700"
-                                    >{continentImage.description}</Text>
-                                </Flex>
-                                <Image 
-                                    height={isMobile ? "250px" : "422px"} 
-                                    width="100%" filter={continentImage.id !== 1 ? "brightness(0.5)" : "none"} 
-                                    src={continentImage.src} 
-                                    alt={continentImage.name} 
-                                />
-                            </Box>
+                    {continents.map(continent =>(
+                        <SwiperSlide>
+                            <Link href={continent.link} key={continent.id}>
+                                <Box>
+                                    <Flex 
+                                        position="absolute"
+                                        direction="column"
+                                        textAlign="center"
+                                        w="100%"
+                                        top="40%"
+                                        zIndex="2"
+                                    >
+                                        <Text 
+                                            fontWeight="700" 
+                                            color="white.100" 
+                                            fontSize={isMobile ? "24px" : "48px"}
+                                        >{continent.name}</Text>
+                                        <Text 
+                                            fontSize={isMobile ? "14px" : "24px"}
+                                            color="gray.100"
+                                            fontWeight="700"
+                                        >{continent.description}</Text>
+                                    </Flex>
+                                    <Image 
+                                        height={isMobile ? "250px" : "422px"} 
+                                        width="100%" filter={continent.id !== 1 ? "brightness(0.5)" : "none"} 
+                                        src={continent.src} 
+                                        alt={continent.name} 
+                                    />
+                                </Box>
+                            </Link>
                         </SwiperSlide>
+                        
                     ))}
                 </Swiper>
             </Box>
