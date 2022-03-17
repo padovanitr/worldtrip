@@ -1,10 +1,11 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text, Grid, Heading } from "@chakra-ui/react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useMediaQuery } from "@chakra-ui/react";
 
 import { Header } from "../../components/Header";
 import { api } from "../../services/api";
 import Head from "next/head";
+import { Info } from "../../components/Info";
   
 interface ContinentProps {
     continent: {
@@ -40,9 +41,9 @@ export default function Continent({ continent }: ContinentProps) {
                     direction="column"
                     textAlign="center"
                     w="100%"
-                    top={isMobile ? "50%" : "78%"}
+                    top={isMobile ? "50%" : "470px"}
                     zIndex="2"
-                    right={isMobile ? "" : "35%"}
+                    right={isMobile ? "" : "450px"}
                 >
                     <Text 
                         fontWeight="700" 
@@ -64,6 +65,37 @@ export default function Continent({ continent }: ContinentProps) {
                     justifyContent={["center","center", "flex-start"]} 
                 />
             </Box>
+
+            <Grid templateColumns={["1fr","1fr","1fr 1fr", "1.2fr 1fr"]} gap={[5, 10, 16, 20]} my={["8", "20"]} padding="0 100px">
+                <Text
+                    fontSize={["lg", "xl", "xl", "2xl"]}
+                    color="gray.700"
+                    textAlign="justify"
+                >
+                {continent.description}
+                </Text>
+                <Flex
+                    align="center"
+                    justify="left"
+                    gap="42px"
+                >   
+                    <Info 
+                        label={continent.numberOfCountries}
+                        text="países"
+                    />
+
+                    <Info 
+                        label={continent.numberOfLanguages}
+                        text="línguas"
+                    />
+
+                    <Info 
+                        label={continent.amountMostPopularCities}
+                        text="cidades +100"
+                        isLast={true}
+                    />
+                </Flex>
+            </Grid>
         </Box>
     )
 }
