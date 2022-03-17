@@ -28,8 +28,8 @@ export function Header({ hasBackLink = false }: HeaderProps){
                 </Link>
             )}
             <Image 
-                boxSize={isMobile ? '81px' : '180px'} 
-                src="Logo.svg" 
+                w={isMobile ? '81px' : '180px'} 
+                src="/images/Logo.svg" 
                 alt="Logo" 
             />
         </Flex>

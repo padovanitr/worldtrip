@@ -139,7 +139,8 @@ export function Carousel(){
                                     </Flex>
                                     <Image 
                                         height={isMobile ? "250px" : "422px"} 
-                                        width="100%" filter={continent.id !== 1 ? "brightness(0.5)" : "none"} 
+                                        width="100%" 
+                                        filter={continent.id !== 1 ? "brightness(0.5)" : "none"} 
                                         src={continent.src} 
                                         alt={continent.name} 
                                     />
