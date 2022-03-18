@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, Heading, Image, Text } from "@chakra-ui/react";
 import { GetStaticPaths, GetStaticProps } from "next";
 
 import { Header } from "../../components/Header";
@@ -6,6 +6,7 @@ import { api } from "../../services/api";
 import Head from "next/head";
 import { ContinentInfo } from "../../components/ContinentInfo";
 import { ContinentBanner } from "../../components/ContinentBanner";
+import { ContinentCities } from "../../components/ContinentCities";
   
 interface ContinentProps {
     continent: {
@@ -28,19 +29,24 @@ interface ContinentProps {
 export default function Continent({ continent }: ContinentProps) {
     console.log('continent ----->', continent)
     return (
-        <Box>
+        <Box
+            backgroundColor="gray.150"
+        >
             <Head>
                 <title>WorldTrip - {continent.name}</title>
             </Head>
             <Header hasBackLink />
 
-            <ContinentBanner 
-                continent={continent}
-            />
+            <ContinentBanner continent={continent} />
 
-            <ContinentInfo 
-                continent={continent}
-            />
+            <Flex
+                p="0 90px"
+                direction="column"
+            >
+                <ContinentInfo continent={continent} />
+                
+                <ContinentCities continent={continent} />
+            </Flex>
         </Box>
     )
 }
