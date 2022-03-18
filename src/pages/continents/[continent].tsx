@@ -1,11 +1,11 @@
-import { Box, Flex, Image, Text, Grid, Heading } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { useMediaQuery } from "@chakra-ui/react";
 
 import { Header } from "../../components/Header";
 import { api } from "../../services/api";
 import Head from "next/head";
-import { Info } from "../../components/Info";
+import { ContinentInfo } from "../../components/ContinentInfo";
+import { ContinentBanner } from "../../components/ContinentBanner";
   
 interface ContinentProps {
     continent: {
@@ -26,7 +26,6 @@ interface ContinentProps {
 }
 
 export default function Continent({ continent }: ContinentProps) {
-    const [isMobile] = useMediaQuery("(max-width: 768px)");
     console.log('continent ----->', continent)
     return (
         <Box>
@@ -35,67 +34,13 @@ export default function Continent({ continent }: ContinentProps) {
             </Head>
             <Header hasBackLink />
 
-            <Box>
-                <Flex 
-                    position="absolute"
-                    direction="column"
-                    textAlign="center"
-                    w="100%"
-                    top={isMobile ? "50%" : "470px"}
-                    zIndex="2"
-                    right={isMobile ? "" : "450px"}
-                >
-                    <Text 
-                        fontWeight="700" 
-                        color="white.100" 
-                        fontSize={isMobile ? "24px" : "48px"}
-                    >{continent.name}</Text>
-                </Flex>
-                <Flex
-                    filter={continent.id !== 1 ? "brightness(0.7)" : "none"} 
-                    w="100%"
-                    h={["150px","300px","500px"]}
-                    px={["0","0","36"]}
-                    pt={["0","0","72"]}
-                    bgImage={`url('${continent.bannerImage}')`}
-                    bgPosition="center"
-                    bgRepeat="no-repeat"
-                    bgSize="cover"
-                    align="center"
-                    justifyContent={["center","center", "flex-start"]} 
-                />
-            </Box>
+            <ContinentBanner 
+                continent={continent}
+            />
 
-            <Grid templateColumns={["1fr","1fr","1fr 1fr", "1.2fr 1fr"]} gap={[5, 10, 16, 20]} my={["8", "20"]} padding="0 100px">
-                <Text
-                    fontSize={["lg", "xl", "xl", "2xl"]}
-                    color="gray.700"
-                    textAlign="justify"
-                >
-                {continent.description}
-                </Text>
-                <Flex
-                    align="center"
-                    justify="left"
-                    gap="42px"
-                >   
-                    <Info 
-                        label={continent.numberOfCountries}
-                        text="países"
-                    />
-
-                    <Info 
-                        label={continent.numberOfLanguages}
-                        text="línguas"
-                    />
-
-                    <Info 
-                        label={continent.amountMostPopularCities}
-                        text="cidades +100"
-                        isLast={true}
-                    />
-                </Flex>
-            </Grid>
+            <ContinentInfo 
+                continent={continent}
+            />
         </Box>
     )
 }
