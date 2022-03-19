@@ -1,5 +1,6 @@
 import { Flex, Grid, Text } from "@chakra-ui/react";
 import { Info } from "./Info";
+import { useMediaQuery } from "@chakra-ui/react";
 
 interface ContinentInfoProps {
     continent: {
@@ -11,10 +12,12 @@ interface ContinentInfoProps {
 }
 
 export function ContinentInfo({ continent }: ContinentInfoProps){
+    const [isMobile] = useMediaQuery("(max-width: 768px)");
+
     return (
         <Grid templateColumns={["1fr","1fr","1fr 1fr", "1.2fr 1fr"]} gap={[5, 10, 16, 20]} my={["8", "20"]}>
             <Text
-                fontSize={["lg", "xl", "xl", "2xl"]}
+                fontSize={["sm", "md", "lg", "xl"]}
                 color="gray.700"
                 textAlign="justify"
             >
@@ -22,8 +25,8 @@ export function ContinentInfo({ continent }: ContinentInfoProps){
             </Text>
             <Flex
                 align="center"
-                justify="center"
-                gap="42px"
+                justify={isMobile ? "space-between" : "center"}
+                gap={isMobile ? "10px" : "42px"}
             >   
                 <Info 
                     label={continent.numberOfCountries}

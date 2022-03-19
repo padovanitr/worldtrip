@@ -23,7 +23,7 @@ export function Header({ hasBackLink = false }: HeaderProps){
             {hasBackLink && (
                 <Link href='/'>
                     <ChakraLink position='absolute' left={['16px', '40px']}>
-                        <Icon as={FiChevronLeft} fontSize={["1rem", "2rem"]}/>
+                        <Icon as={FiChevronLeft} color="gray.500" fontSize={["1rem", "2rem"]}/>
                     </ChakraLink>
                 </Link>
             )}

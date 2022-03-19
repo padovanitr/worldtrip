@@ -19,9 +19,9 @@ export function ContinentBanner({ continent }: ContinentInfoProps){
                 direction="column"
                 textAlign="center"
                 w="100%"
-                top={isMobile ? "50%" : "470px"}
+                top={isMobile ? "110px" : "470px"}
                 zIndex="2"
-                right={isMobile ? "" : "450px"}
+                right={isMobile ? "" : "390px"}
             >
                 <Text 
                     fontWeight="700" 
@@ -30,12 +30,11 @@ export function ContinentBanner({ continent }: ContinentInfoProps){
                 >{continent.name}</Text>
             </Flex>
             <Flex
-                filter={continent.id !== 1 ? "brightness(0.7)" : "none"} 
+                bgImage={`linear-gradient(0deg, rgba(28, 20, 1, 0.35), rgba(28, 20, 1, 0.35)), url('${continent.bannerImage}')`}
                 w="100%"
                 h={["150px","300px","500px"]}
                 px={["0","0","36"]}
                 pt={["0","0","72"]}
-                bgImage={`url('${continent.bannerImage}')`}
                 bgPosition="center"
                 bgRepeat="no-repeat"
                 bgSize="cover"

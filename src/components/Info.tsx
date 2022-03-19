@@ -1,5 +1,6 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import { AiOutlineInfoCircle as InfoIcon } from 'react-icons/ai';
+import { useMediaQuery } from "@chakra-ui/react";
 
 interface InfoProps {
     label: number;
@@ -8,13 +9,15 @@ interface InfoProps {
 }
 
 export function Info({ label, text, isLast }: InfoProps){
+    const [isMobile] = useMediaQuery("(max-width: 768px)");
+
     return (
         <Flex
             direction="column"
-            align="center"
+            align={isMobile ? "left" : "center"}
         >
             <Heading 
-                fontSize="48px"
+                fontSize={isMobile ? "24px" : "48px"}
                 color="yellow.400"
                 fontWeight="600"
             >{label}</Heading>
@@ -23,12 +26,12 @@ export function Info({ label, text, isLast }: InfoProps){
                 gap="5px"
             >
                 <Text 
-                    fontSize="24px"
+                    fontSize={isMobile ? "18px" : "24px"}
                     color="gray.800"
-                    fontWeight="600"
+                    fontWeight={isMobile ? "400" : "600"}
                 >{text}
                 </Text>
-                {isLast && <InfoIcon color="#ccc"/> }
+                {isLast && <InfoIcon size={isMobile ? "10px" : "15px" } color="#ccc"/> }
             </Flex>
         </Flex>
     )
