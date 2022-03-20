@@ -41,19 +41,3 @@ a {
 .swiper-wrapper {
   cursor: pointer;
 }
-
-.loadingGif {
-  height: 100%;
-  width: 100%;
-  background: rgba(105, 114, 125, 0.5);
-  z-index: 100000;
-  top: 0;
-  position: fixed;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-
-  img {
-    height: 70px;
-  }
-}
