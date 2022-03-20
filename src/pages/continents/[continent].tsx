@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, GridItem, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useMediaQuery } from "@chakra-ui/react";
 
@@ -29,7 +29,7 @@ interface ContinentProps {
 
 export default function Continent({ continent }: ContinentProps) {
     const [isMobile] = useMediaQuery("(max-width: 768px)");
-    console.log('continent ----->', continent)
+
     return (
         <Box
             backgroundColor="gray.150"
@@ -68,6 +68,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return {
         props: {
             continent: data[0],
-        }
+        },
+        revalidate: 10 * 60,
     }
 }
